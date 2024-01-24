@@ -19,10 +19,20 @@ AudioPlayer[] soundEffects = new AudioPlayer[numberOfSoundEffects]; //song is no
 color Black = #000000;
 PFont generalFont;
 Boolean stopBoolean=false, pauseBoolean=false, changeState=false;
+int  SHeight,SWidth,SHeight2,SWidth2;
+float BackgroundS1, BackgroundN1, BackgroundWidthN1, BackgroundHeightN1 ;
+float BackgroundS2, BackgroundN2, BackgroundWidth, BackgroundHeight ;
+float BackgroundS3, BackgroundN3, BackgroundWidthN3, BackgroundHeightN3 ;
+PImage SiemImage, Yoasobi, YoasobiX1, YoasobiY1 ;
+
 //
 void setup() { //
   size( 400, 200) ;
-  fullScreen();
+  //
+  
+  // ONLU 1 T0 CHOOSE BETWEEN FULLSCREEN OR SIZE () 
+  
+  //fullScreen();
   background(250);
   //Display Algorithm
   String relativePathway = "FreeWare Music/MusicDownload/"; //Relative Path
