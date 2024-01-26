@@ -11,7 +11,7 @@ import ddf.minim.ugens.*;
 //Global Variables
 File musicFolder, soundEffectFolder; //Class for java.io.* library
 Minim minim; //creates object to access all functions
-int numberOfSongs = 1, numberOfSoundEffects = 1; //Placeholder Only, reexecute lines after fileCount Known
+int numberOfSongs = 9, numberOfSoundEffects = 0; //Placeholder Only, reexecute lines after fileCount Known
 int currentSong=0; //Variable is rewritten in setup()
 AudioPlayer[] playList = new AudioPlayer[numberOfSongs]; //song is now similar to song1
 AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs]; //same as above
@@ -28,11 +28,7 @@ PImage SiemImage, Yoasobi, YoasobiX1, YoasobiY1 ;
 //
 void setup() { //
   size( 400, 200) ;
-  //
-  
-  // ONLU 1 T0 CHOOSE BETWEEN FULLSCREEN OR SIZE () 
-  
-  //fullScreen();
+  fullScreen();
   background(250);
   //Display Algorithm
   String relativePathway = "FreeWare Music/MusicDownload/"; //Relative Path
@@ -66,6 +62,9 @@ void setup() { //
   } //End Music Load
   generalFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
   playList[0].play();
+  //
+  //song information
+ properties();
 } //End setup
 //
 void draw() {
@@ -75,37 +74,23 @@ void draw() {
   //if ( playList[currentSong].isLooping() && playList[currentSong].loopCount()==-1 ) println("Looping Infinitely");
   //if ( playList[currentSong].isPlaying() && !playList[currentSong].isLooping() ) println("Play Once");
   //
+  
   //Debugging Fast Forward and Fast Rewind
   //println( "Song Position", song1.position(), "Song Length", song1.length() );
   //
-  int size = 20; //Change this font size
   // songMetaData1.title()
+    int sizetitle = 70; //Change this font size
   rect(width*1/4, height*0, width*1/2, height*3/10); //mistake
-  //Buttons
-  //songMetaData1.NextButton()
-  circle(width*7/10, height*1/2, 40);
-    fill(Black);
-    textSize(10);
-    text("NEXT", width*7/10, height*1/2);
-    fill(255);
-  //songMetaData1.Pause||PlayButton()
-  circle(width*5/10, height*1/2, 60);
-   fill(Black);
-    textSize(11);
-    text("PAUSE", width*5/10, height*1/2);
-    fill(255);
-  // songMetaData1.Previous()
-  circle(width*3/10, height*1/2, 40);
-    fill(Black);
-    textSize(9);
-    text("BACK",width*3/10, height*1/2);
-    fill(255);
   fill(Black); //Ink
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE
-  textFont(generalFont, size ); //Change the number until it fits, largest font size
+  textFont(generalFont, sizetitle ); //Change the number until it fits, largest font size
   text(playListMetaData[currentSong].title(), width*1/4, height*0, width*1/2, height*3/10);
   fill(255); //Reset to white for rest of the program
+  //Buttons
+  
+ buttons();
+ 
   //
   //Autoplay, next song automatically plays
   if ( playList[currentSong].isPlaying() ) {
@@ -143,7 +128,23 @@ void draw() {
 } //End draw
 //
 void keyPressed() {
-  /* Broken KeyBinds
+   /* Broken KeyBinds
+  if ( key=='P' || key=='p' ) {
+    changeState=true;
+    if ( pauseBoolean==false ) {
+      pauseBoolean=true;
+      println("herek2", pauseBoolean);
+    } else {
+      pauseBoolean=false;
+      println("herek3", pauseBoolean);
+      //playList[currentSong].play();
+    }
+    if (  stopBoolean==true ) {
+      stopBoolean=false;
+    }
+    println ( "herek4", playList[currentSong].isPlaying(), pauseBoolean, stopBoolean, changeState );
+  }
+ 
    if ( key=='P' || key=='p' ) song[0].play(); //Parameter is milli-seconds from start of audio file to start playing (illustrate with examples)
    //.play() includes .rewind()
    //
@@ -201,6 +202,10 @@ void keyPressed() {
 //
 //
 void mousePressed() {
+  //PauseButton
+ // if(mouseX = circle(width*7/10, height*1/2, width*1/13) ){
+  //currentSong=currentSong+1;
+ // }
 } //End mousePressed
 //
 //End MAIN Program
